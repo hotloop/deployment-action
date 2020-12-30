@@ -1,0 +1,24 @@
+name: HotLoop Deployment
+description: Report deployment to HotLoop
+inputs:
+  token:
+    description: Your HotLoop API token
+    required: true
+  service:
+    description: The service that has been deployed
+    required: true
+  environment:
+    description: The environment that has been deployed to
+    required: true
+  success:
+    description: A boolean indicating if the deployment succeeded
+    required: false
+  started-at:
+    description: A DateTime indicating the time at which the deployment started
+    required: false
+  ended-at:
+    description: A DateTime indicated the time at which the deployment completed
+    required: false
+runs:
+  using: node12
+  main: src/index.js
