@@ -7,7 +7,7 @@ const getConfig = () => {
   const service = core.getInput('service')
   const environment = core.getInput('environment')
   const success = core.getInput('success') || true
-  const startedAtEnv = core.getInput('started-at')
+  const startedAtEnv = core.getInput('started-at') || process.env['HOTLOOP_START_TIME']
   const endedAtEnv = core.getInput('ended-at')
   const startedAt = startedAtEnv ? new Date(startedAtEnv * 1000).getTime() : new Date().getTime()
   const endedAt = endedAtEnv ? new Date(endedAtEnv * 1000).getTime() : new Date().getTime()
