@@ -1,6 +1,6 @@
 const core = require('@actions/core')
 const github = require('@actions/github')
-const { HotLoopClient } = require('./HotLoopClient')
+const { HotLoopSdkFactory } = require('@hotloop/hotloop-sdk')
 
 const getConfig = () => {
   const token = core.getInput('token')
@@ -43,7 +43,8 @@ const getConfig = () => {
 }
 
 const syncDeployment = config => {
-  const client = new HotLoopClient(config.token)
+  const opts = { userAgent: 'coverage-action', timeout: 5000, retries: 3, retryDelay: 1000 }
+  const client = HotLoopSdkFactory.getInstance(config.token, opts)
   return client.syncDeployment(config.options)
 }
 
