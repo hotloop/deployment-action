@@ -7,7 +7,7 @@ var ConfigFactory = /** @class */ (function () {
     }
     ConfigFactory.get = function (inputFn, githubContext) {
         var opts = { required: true };
-        var token = inputFn('token', opts);
+        var key = inputFn('hotloop-key', opts);
         var service = inputFn('service', opts);
         var environment = inputFn('environment', opts);
         var success = inputFn('success') ? inputFn('success') === 'true' : true;
@@ -16,7 +16,7 @@ var ConfigFactory = /** @class */ (function () {
         var startedAt = startedAtEnv ? new Date(parseInt(startedAtEnv) * 1000).getTime() : new Date().getTime();
         var endedAt = endedAtEnv ? new Date(parseInt(endedAtEnv) * 1000).getTime() : new Date().getTime();
         var context = githubContext.payload;
-        if (nullOrEmpty(token))
+        if (nullOrEmpty(key))
             throw new Error('Invalid token');
         if (!context.repository || !context.repository.html_url)
             throw new Error('invalid github context');
@@ -27,7 +27,7 @@ var ConfigFactory = /** @class */ (function () {
         if (nullOrEmpty(environment))
             throw new Error('Invalid environment');
         return {
-            token: token,
+            key: key,
             options: {
                 repository: context.repository.html_url,
                 branch: context.pull_request ? context.pull_request.head.ref : context.ref.substr(11),

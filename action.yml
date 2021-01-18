@@ -1,8 +1,8 @@
 name: HotLoop Deployment
 description: Report deployment to HotLoop
 inputs:
-  token:
-    description: Your HotLoop API token
+  hotloop-key:
+    description: Your HotLoop API key
     required: true
   service:
     description: The service that has been deployed

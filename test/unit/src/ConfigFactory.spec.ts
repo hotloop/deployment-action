@@ -96,7 +96,7 @@ describe('ConfigFactory', () => {
       .returns(environment)
 
     const config: Config = ConfigFactory.get(inputFn, mergeGithubContext)
-    config.token.should.deep.equal(token)
+    config.key.should.deep.equal(token)
   })
 
   it('sets the service correctly', () => {
