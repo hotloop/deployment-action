@@ -1,7 +1,7 @@
 import { createSandbox, SinonSandbox, SinonStub } from 'sinon'
 import { Context } from '@actions/github/lib/context'
 import { Config, ConfigFactory } from '../../../src/ConfigFactory'
-import { default as MockDate } from 'Mockdate'
+import { default as MockDate } from 'mockdate'
 
 describe('ConfigFactory', () => {
   let sandbox: SinonSandbox = createSandbox()
@@ -51,7 +51,7 @@ describe('ConfigFactory', () => {
     const message = 'token not supplied'
 
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .throws(new Error(message))
 
     const exec = () => ConfigFactory.get(inputFn, mergeGithubContext)
@@ -62,7 +62,7 @@ describe('ConfigFactory', () => {
     const message = 'service not supplied'
 
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .throws(new Error(message))
@@ -75,7 +75,7 @@ describe('ConfigFactory', () => {
     const message = 'token not supplied'
 
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -88,7 +88,7 @@ describe('ConfigFactory', () => {
 
   it('sets the token correctly', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -101,7 +101,7 @@ describe('ConfigFactory', () => {
 
   it('sets the service correctly', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -114,7 +114,7 @@ describe('ConfigFactory', () => {
 
   it('sets the environment correctly', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -127,7 +127,7 @@ describe('ConfigFactory', () => {
 
   it('sets the success to true when supplied as true', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -142,7 +142,7 @@ describe('ConfigFactory', () => {
 
   it('sets the success to false when supplied as false', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -157,7 +157,7 @@ describe('ConfigFactory', () => {
 
   it('sets the success to true when not supplied', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -170,7 +170,7 @@ describe('ConfigFactory', () => {
 
   it('sets the branch name to the head ref when in the context of a Pull Request', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -183,7 +183,7 @@ describe('ConfigFactory', () => {
 
   it('sets the branch name to the base branch when in the context of a merge', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -196,7 +196,7 @@ describe('ConfigFactory', () => {
 
   it('sets the start time correctly when it is supplied', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -211,7 +211,7 @@ describe('ConfigFactory', () => {
 
   it('sets the start time to the system time when it is not supplied', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -224,7 +224,7 @@ describe('ConfigFactory', () => {
 
   it('sets the end time correctly when iti is supplied', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
@@ -239,7 +239,7 @@ describe('ConfigFactory', () => {
 
   it('sets the end time to the system time when it is not supplied', () => {
     inputFn
-      .withArgs('token')
+      .withArgs('hotloop-key')
       .returns(token)
       .withArgs('service')
       .returns(service)
