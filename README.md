@@ -31,5 +31,5 @@ uses: hotloop/deployment-action@main
 with:
   service: my-service
   environment: production
-  token: your-hotloop-token
+  hotloop-key: your-hotloop-key
 ```
